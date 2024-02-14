@@ -8,3 +8,11 @@ def Home(request):
         request,
         "index.html"
     )
+
+def counter(request):
+    
+
+    return render(
+        request,
+        "counter.html"
+    )
