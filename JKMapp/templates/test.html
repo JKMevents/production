@@ -11,7 +11,7 @@
 
     <div class="calculator">
         <div class="row">
-        <form action="{% url 'counter' %}" method="post">
+        <form action="{% url 'test' %}" method="post">
         {% csrf_token %}
         <input type="text" id="display" value="0" name="display" readonly />
       
@@ -22,7 +22,7 @@
         <button class="button" onclick="clearDisplay()">Clear</button>
         <button
           class="button"
-          onclick="printJS('{% static 'qrcode/tickets.png' %}', 'image')"
+          onclick="print()"
         >
           Print
         </button>
@@ -62,7 +62,11 @@
         document.getElementById("display").value = "0";
       }
 
-      function calculate() {}
+      function print() {
+        var num = document.getElementById("display").value
+        var fileName = 'tickets' + num +'.png';
+        printJS('{% static "qrcode/" %}' + fileName, 'image');
+    }
     </script>
   </body>
 </html>
